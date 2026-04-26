@@ -2,7 +2,7 @@ import { supabase } from './supabaseClient';
 
 export const getProfile = async (userId) => {
   const { data, error } = await supabase
-    .from('profiles')
+    .from('users')
     .select('*')
     .eq('id', userId)
     .single();
@@ -12,7 +12,7 @@ export const getProfile = async (userId) => {
 
 export const updateProfile = async (userId, updateData) => {
   const { data, error } = await supabase
-    .from('profiles')
+    .from('users')
     .update(updateData)
     .eq('id', userId)
     .select();

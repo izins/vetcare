@@ -2,7 +2,7 @@ import { supabase } from './supabaseClient';
 
 export const getUserAnimals = async (userId) => {
   const { data, error } = await supabase
-    .from('animals')
+    .from('animal')
     .select('*')
     .eq('owner_id', userId)
     .order('created_at', { ascending: false });
@@ -12,7 +12,7 @@ export const getUserAnimals = async (userId) => {
 
 export const createAnimal = async (animalData) => {
   const { data, error } = await supabase
-    .from('animals')
+    .from('animal')
     .insert([animalData])
     .select();
   if (error) throw error;
@@ -21,7 +21,7 @@ export const createAnimal = async (animalData) => {
 
 export const updateAnimal = async (id, updateData) => {
   const { data, error } = await supabase
-    .from('animals')
+    .from('animal')
     .update(updateData)
     .eq('id', id)
     .select();
@@ -31,7 +31,7 @@ export const updateAnimal = async (id, updateData) => {
 
 export const deleteAnimal = async (id) => {
   const { error } = await supabase
-    .from('animals')
+    .from('animal')
     .delete()
     .eq('id', id);
   if (error) throw error;

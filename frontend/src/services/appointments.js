@@ -2,7 +2,7 @@ import { supabase } from './supabaseClient';
 
 export const createAppointment = async (appointmentData) => {
   const { data, error } = await supabase
-    .from('appointments')
+    .from('appointement')
     .insert([appointmentData])
     .select();
   if (error) throw error;
@@ -11,12 +11,12 @@ export const createAppointment = async (appointmentData) => {
 
 export const getUserAppointments = async (userId) => {
   const { data, error } = await supabase
-    .from('appointments')
+    .from('appointement')
     .select(`
       *,
-      animals ( name, species, breed )
+      animal ( name, espece, race )
     `)
-    .eq('user_id', userId)
+    .eq('owner_id', userId)
     .order('date', { ascending: true });
   if (error) throw error;
   return data;
@@ -24,7 +24,7 @@ export const getUserAppointments = async (userId) => {
 
 export const getAppointmentsByAnimal = async (animalId) => {
   const { data, error } = await supabase
-    .from('appointments')
+    .from('appointement')
     .select('*')
     .eq('animal_id', animalId)
     .order('date', { ascending: false });
@@ -34,7 +34,7 @@ export const getAppointmentsByAnimal = async (animalId) => {
 
 export const updateAppointmentStatus = async (id, status) => {
   const { data, error } = await supabase
-    .from('appointments')
+    .from('appointement')
     .update({ status })
     .eq('id', id)
     .select();

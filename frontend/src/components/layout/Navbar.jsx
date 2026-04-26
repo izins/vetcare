@@ -1,10 +1,19 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { PawPrint, LogOut } from 'lucide-react';
+import { useAuth, signOut } from '../../services/auth';
 
 export default function Navbar() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const isHome = location.pathname === '/';
+  const { user } = useAuth();
+
+  const handleSignOut = () => {
+    signOut();
+    navigate('/');
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -47,33 +56,84 @@ export default function Navbar() {
       }}>
         {/* Logo */}
         <Link to="/" style={{
-          fontFamily: 'var(--font-serif)',
-          fontSize: '1.5rem',
+          display: 'flex', alignItems: 'center', gap: '10px',
           color: textColor,
           transition: 'color 0.3s',
-          display: 'flex', alignItems: 'center', gap: 'var(--space-2)'
         }}>
-          VetCare
+          <div style={{
+            width: '36px', height: '36px', borderRadius: 'var(--radius-md)',
+            background: scrolled || !isHome ? 'var(--color-accent-soft)' : 'rgba(255,255,255,0.12)',
+            border: scrolled || !isHome ? 'none' : '1px solid rgba(255,255,255,0.2)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            transition: 'all 0.3s',
+          }}>
+            <PawPrint size={18} color={scrolled || !isHome ? 'var(--color-accent)' : '#fff'} />
+          </div>
+          <span style={{
+            fontFamily: 'var(--font-serif)',
+            fontSize: '1.35rem',
+            letterSpacing: '-0.01em',
+          }}>
+            VetCare
+          </span>
         </Link>
 
         {/* Center Links */}
-        <div style={{ display: 'flex', gap: 'var(--space-7)', alignItems: 'center' }}>
-          <Link to="/" style={linkStyle('/')}>Home</Link>
-          <Link to="/dashboard" style={linkStyle('/dashboard')}>Dashboard</Link>
-          <Link to="/appointments" style={linkStyle('/appointments')}>Appointments</Link>
-          <Link to="/vets" style={linkStyle('/vets')}>Our Team</Link>
-          <Link to="/health-tips" style={linkStyle('/health-tips')}>Health Tips</Link>
+        <div style={{ display: 'flex', gap: 'var(--space-6)', alignItems: 'center' }}>
+          {[
+            { path: '/', label: 'Home' },
+            { path: '/dashboard', label: 'Dashboard' },
+            { path: '/appointments', label: 'Appointments' },
+            { path: '/vets', label: 'Our Team' },
+            { path: '/health-tips', label: 'Health Tips' },
+          ].map(link => (
+            <Link key={link.path} to={link.path} style={linkStyle(link.path)}
+              onMouseEnter={e => e.currentTarget.style.opacity = '1'}
+              onMouseLeave={e => { if (location.pathname !== link.path) e.currentTarget.style.opacity = '0.7'; }}
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
 
-        {/* Right */}
-        <Link to="/auth" className="btn btn-dark btn-sm" style={{
-          background: scrolled || !isHome ? 'var(--color-dark)' : 'rgba(255,255,255,0.15)',
-          backdropFilter: 'blur(8px)',
-          color: '#fff',
-          border: scrolled || !isHome ? 'none' : '1px solid rgba(255,255,255,0.3)',
-        }}>
-          Book Now
-        </Link>
+        {/* Right CTA */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)' }}>
+          {user && (
+            <button onClick={handleSignOut} style={{
+              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+              width: '36px', height: '36px', borderRadius: '50%',
+              background: scrolled || !isHome ? 'var(--color-cream)' : 'rgba(255,255,255,0.15)',
+              border: scrolled || !isHome ? '1px solid var(--color-sand)' : '1px solid rgba(255,255,255,0.3)',
+              color: textColor,
+              cursor: 'pointer',
+              transition: 'all 0.3s',
+            }}
+              title="Sign Out"
+              onMouseEnter={e => e.currentTarget.style.background = scrolled || !isHome ? 'var(--color-sand)' : 'rgba(255,255,255,0.25)'}
+              onMouseLeave={e => e.currentTarget.style.background = scrolled || !isHome ? 'var(--color-cream)' : 'rgba(255,255,255,0.15)'}
+            >
+              <LogOut size={16} />
+            </button>
+          )}
+
+          <Link to={user ? "/book-appointment" : "/auth"} className="btn btn-sm" style={{
+            background: scrolled || !isHome ? 'var(--color-dark)' : 'rgba(255,255,255,0.15)',
+            backdropFilter: 'blur(8px)',
+            color: '#fff',
+            border: scrolled || !isHome ? 'none' : '1px solid rgba(255,255,255,0.3)',
+            display: 'inline-flex', alignItems: 'center', gap: '8px',
+            padding: '10px 24px',
+            borderRadius: 'var(--radius-full)',
+            fontSize: '0.8125rem',
+            fontWeight: 600,
+            transition: 'all 0.3s var(--ease-out)',
+          }}
+            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; }}
+            onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; }}
+          >
+            {user ? 'Book Now' : 'Sign In'}
+          </Link>
+        </div>
       </div>
     </nav>
   );

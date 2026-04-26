@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { useAuth } from '../../services/auth';
 
 export default function Footer() {
+  const { user } = useAuth();
+
   return (
     <footer style={{
       background: 'var(--color-dark)',
@@ -33,7 +36,7 @@ export default function Footer() {
               <Link to="/" style={{ fontSize: '0.9375rem', transition: 'color 0.2s' }}>Home</Link>
               <Link to="/vets" style={{ fontSize: '0.9375rem' }}>Our Veterinarians</Link>
               <Link to="/health-tips" style={{ fontSize: '0.9375rem' }}>Health Tips</Link>
-              <Link to="/auth" style={{ fontSize: '0.9375rem' }}>Book Appointment</Link>
+              <Link to={user ? "/book-appointment" : "/auth"} style={{ fontSize: '0.9375rem' }}>Book Appointment</Link>
             </div>
           </div>
 

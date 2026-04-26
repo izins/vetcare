@@ -7,6 +7,8 @@ import DashboardPage from './pages/DashboardPage'
 import ProfilePage from './pages/ProfilePage'
 import HistoryPage from './pages/HistoryPage'
 import AppointmentsPage from './pages/AppointmentsPage'
+import BookAppointmentPage from './pages/BookAppointmentPage'
+import AddPetPage from './pages/AddPetPage'
 import VetsPage from './pages/VetsPage'
 import HealthTipsPage from './pages/HealthTipsPage'
 
@@ -25,6 +27,8 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/history" element={<HistoryPage />} />
           <Route path="/appointments" element={<AppointmentsPage />} />
+          <Route path="/book-appointment" element={<BookAppointmentPage />} />
+          <Route path="/add-pet" element={<AddPetPage />} />
           <Route path="/vets" element={<VetsPage />} />
           <Route path="/health-tips" element={<HealthTipsPage />} />
         </Routes>
