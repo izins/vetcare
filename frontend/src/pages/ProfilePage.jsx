@@ -1,10 +1,49 @@
 import { User, Settings, LogOut, PawPrint, Shield, Bell, ArrowRight } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import { getProfile } from '../services/users';
+import { getUserAnimals } from '../services/animals';
+import { useAuth, signOut } from '../services/auth';
 
 export default function ProfilePage() {
+  const { user: currentUser } = useAuth();
+  const currentUserId = currentUser?.id || '98681655-9f0b-4f6d-9dbb-0c90aa80e1fc';
+  const navigate = useNavigate();
+
+  const { data: userProfile } = useQuery({
+    queryKey: ['profile', currentUserId],
+    queryFn: () => getProfile(currentUserId),
+    enabled: !!currentUserId,
+  });
+
+  const { data: dbAnimals = [] } = useQuery({
+    queryKey: ['animals', currentUserId],
+    queryFn: () => getUserAnimals(currentUserId),
+  });
+
+  const userName = userProfile?.username || 'Guest';
+  const userEmail = userProfile?.email || currentUser?.email || 'guest@example.com';
+  const firstName = userName.split(' ')[0] || '';
+  const lastName = userName.split(' ').slice(1).join(' ') || '';
   const mockPets = [
-    { name: 'Luna', species: 'Dog', breed: 'Golden Retriever', age: 3, img: '/statics/Si/IMG_9611.JPG' },
-    { name: 'Milo', species: 'Cat', breed: 'British Shorthair', age: 2, img: '/statics/Si/IMG_9595.JPG' },
+    { id: '1', name: 'Luna', species: 'Dog', breed: 'Golden Retriever', age: 3, img: '/statics/Si/IMG_9611.JPG' },
+    { id: '2', name: 'Milo', species: 'Cat', breed: 'British Shorthair', age: 2, img: '/statics/Si/IMG_9595.JPG' },
   ];
+  const animalsToDisplay = currentUser ? dbAnimals : mockPets;
+
+  const handleSignOut = () => {
+    signOut();
+    navigate('/');
+  };
+
+  const getDefaultImage = (espece) => {
+    switch (espece?.toLowerCase()) {
+      case 'cat': return 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=150&q=80';
+      case 'bird': return 'https://images.unsplash.com/photo-1552728089-571eb144586f?auto=format&fit=crop&w=150&q=80';
+      case 'rabbit': return 'https://images.unsplash.com/photo-1585110396000-c9fd7e4815b3?auto=format&fit=crop&w=150&q=80';
+      default: return 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=150&q=80'; // Dog
+    }
+  };
 
   const sidebarItems = [
     { icon: User, label: 'Account', active: true },
@@ -39,16 +78,16 @@ export default function ProfilePage() {
               border: '3px solid rgba(255,255,255,0.2)',
               boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
             }}>
-              S
+              {userName.charAt(0).toUpperCase()}
             </div>
             <div>
               <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 'var(--space-2)' }}>
                 MY ACCOUNT
               </p>
               <h1 style={{ color: '#fff', fontSize: 'clamp(2rem, 4vw, 3rem)', textShadow: '0 2px 20px rgba(0,0,0,0.3)', marginBottom: 'var(--space-1)' }}>
-                Sarah Connor
+                {userName}
               </h1>
-              <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.9375rem' }}>sarah@example.com</p>
+              <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.9375rem' }}>{userEmail}</p>
             </div>
           </div>
         </div>
@@ -87,7 +126,7 @@ export default function ProfilePage() {
               })}
             </div>
             <div style={{ height: '1px', background: 'var(--color-sand)', margin: 'var(--space-4) 0' }} />
-            <button className="btn btn-ghost" style={{
+            <button onClick={handleSignOut} className="btn btn-ghost" style={{
               justifyContent: 'flex-start', width: '100%',
               color: 'var(--color-error)', borderRadius: 'var(--radius-md)',
             }}>
@@ -126,20 +165,20 @@ export default function ProfilePage() {
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-5)' }}>
                     <div className="input-group">
                       <label>First Name</label>
-                      <input className="input" type="text" defaultValue="Sarah" />
+                      <input className="input" type="text" defaultValue={firstName} />
                     </div>
                     <div className="input-group">
                       <label>Last Name</label>
-                      <input className="input" type="text" defaultValue="Connor" />
+                      <input className="input" type="text" defaultValue={lastName} />
                     </div>
                   </div>
                   <div className="input-group">
                     <label>Email</label>
-                    <input className="input" type="email" defaultValue="sarah@example.com" disabled style={{ opacity: 0.6 }} />
+                    <input className="input" type="email" defaultValue={userEmail} disabled style={{ opacity: 0.6 }} />
                   </div>
                   <div className="input-group">
                     <label>Phone</label>
-                    <input className="input" type="tel" defaultValue="+1 (555) 123-4567" />
+                    <input className="input" type="tel" defaultValue={userProfile?.phone || ''} placeholder="Add your phone number" />
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 'var(--space-3)' }}>
                     <button className="btn btn-outline">Cancel</button>
@@ -177,30 +216,36 @@ export default function ProfilePage() {
               </div>
               <div style={{ padding: 'var(--space-5) var(--space-6)' }}>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-4)' }}>
-                  {mockPets.map((pet, i) => (
-                    <div key={i} style={{
-                      display: 'flex', alignItems: 'center', gap: 'var(--space-4)',
-                      padding: 'var(--space-4)',
-                      background: 'var(--color-cream)',
-                      borderRadius: 'var(--radius-md)',
-                      border: '1px solid var(--color-sand)',
-                      transition: 'all 0.2s var(--ease-out)',
-                      cursor: 'pointer',
-                    }}
-                      onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--color-accent)'; e.currentTarget.style.boxShadow = 'var(--shadow-sm)'; }}
-                      onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--color-sand)'; e.currentTarget.style.boxShadow = 'none'; }}
-                    >
-                      <img src={pet.img} alt={pet.name} style={{
-                        width: '52px', height: '52px', borderRadius: 'var(--radius-full)',
-                        objectFit: 'cover', border: '2px solid var(--color-accent-soft)',
-                      }} />
-                      <div style={{ flex: 1 }}>
-                        <p style={{ fontWeight: 600, color: 'var(--color-dark)' }}>{pet.name}</p>
-                        <p className="text-xs text-muted">{pet.breed} · {pet.age} yrs</p>
+                  {animalsToDisplay.length === 0 ? (
+                    <div style={{ padding: 'var(--space-4)', color: 'var(--color-body)' }}>No pets found.</div>
+                  ) : (
+                    animalsToDisplay.map((pet, i) => (
+                      <div key={pet.id || i} style={{
+                        display: 'flex', alignItems: 'center', gap: 'var(--space-4)',
+                        padding: 'var(--space-4)',
+                        background: 'var(--color-cream)',
+                        borderRadius: 'var(--radius-md)',
+                        border: '1px solid var(--color-sand)',
+                        transition: 'all 0.2s var(--ease-out)',
+                        cursor: 'pointer',
+                      }}
+                        onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--color-accent)'; e.currentTarget.style.boxShadow = 'var(--shadow-sm)'; }}
+                        onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--color-sand)'; e.currentTarget.style.boxShadow = 'none'; }}
+                      >
+                        <img src={pet.img || getDefaultImage(pet.espece || pet.species)} alt={pet.name} style={{
+                          width: '52px', height: '52px', borderRadius: 'var(--radius-full)',
+                          objectFit: 'cover', border: '2px solid var(--color-accent-soft)',
+                        }} />
+                        <div style={{ flex: 1 }}>
+                          <p style={{ fontWeight: 600, color: 'var(--color-dark)' }}>{pet.name}</p>
+                          <p className="text-xs text-muted">{pet.race || pet.breed} {pet.age ? `· ${pet.age} yrs` : ''}</p>
+                        </div>
+                        <Link to={`/health-book/${pet.id}`} className="btn btn-outline btn-sm" style={{ padding: '6px 12px' }}>
+                          Carnet de Santé
+                        </Link>
                       </div>
-                      <ArrowRight size={16} color="var(--color-stone)" />
-                    </div>
-                  ))}
+                    ))
+                  )}
                 </div>
               </div>
             </div>

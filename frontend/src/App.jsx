@@ -11,6 +11,7 @@ import BookAppointmentPage from './pages/BookAppointmentPage'
 import AddPetPage from './pages/AddPetPage'
 import VetsPage from './pages/VetsPage'
 import HealthTipsPage from './pages/HealthTipsPage'
+import HealthBookPage from './pages/HealthBookPage'
 
 function App() {
   const location = useLocation()
@@ -31,6 +32,7 @@ function App() {
           <Route path="/add-pet" element={<AddPetPage />} />
           <Route path="/vets" element={<VetsPage />} />
           <Route path="/health-tips" element={<HealthTipsPage />} />
+          <Route path="/health-book/:id" element={<HealthBookPage />} />
         </Routes>
       </main>
       {!isAuthPage && <Footer />}

@@ -83,6 +83,7 @@ export default function Navbar() {
           {[
             { path: '/', label: 'Home' },
             { path: '/dashboard', label: 'Dashboard' },
+            { path: '/profile', label: 'My Account' },
             { path: '/appointments', label: 'Appointments' },
             { path: '/vets', label: 'Our Team' },
             { path: '/health-tips', label: 'Health Tips' },

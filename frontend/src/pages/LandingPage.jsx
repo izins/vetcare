@@ -97,7 +97,7 @@ export default function LandingPage() {
       {/* ======================================================
           SECTION 2: ABOUT — Forest green storytelling block
           ====================================================== */}
-      <section style={{ background: '#1a3a2e', padding: 'var(--space-11) 0' }}>
+      <section style={{ background: '#59402F', padding: 'var(--space-11) 0' }}>
         <div className="container" style={{
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
@@ -140,159 +140,159 @@ export default function LandingPage() {
       </section>
 
       {/* ======================================================
-          SECTION 3: SERVICES — Premium bento photo-cards
+          SECTION 3: SERVICES — Vivid "justlittlethings" style cards
           ====================================================== */}
       <section id="services" style={{
-        background: '#0d0d0d',
-        padding: 'var(--space-10) 0',
-        position: 'relative',
-        overflow: 'hidden',
+        padding: 'var(--space-11) 0',
+        background: '#FFFFFF',
       }}>
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <div style={{ textAlign: 'center', marginBottom: 'var(--space-9)', maxWidth: '600px', margin: '0 auto var(--space-9)' }}>
-            <p className="label" style={{ marginBottom: 'var(--space-3)', color: 'rgba(255,255,255,0.4)' }}>OUR SERVICES</p>
-            <h2 style={{ marginBottom: 'var(--space-4)', color: '#fff' }}>Comprehensive Care, Under One Roof</h2>
-            <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '1.0625rem' }}>From preventive wellness to urgent care, we're here for every stage of your pet's life.</p>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '56px', maxWidth: '600px', margin: '0 auto 56px' }}>
+            <p className="label" style={{ marginBottom: '12px', color: '#1a1a1a', opacity: 0.5, letterSpacing: '0.15em', fontWeight: 700 }}>OUR SERVICES</p>
+            <h2 style={{ marginBottom: '16px', color: '#1a1a1a', fontWeight: 900 }}>Comprehensive Care, Under One Roof</h2>
+            <p style={{ color: '#333', fontSize: '1.0625rem' }}>From preventive wellness to urgent care, we're here for every stage of your pet's life.</p>
           </div>
 
           {/* BENTO GRID — row 1: big left + tall right */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1.3fr 1fr', gridTemplateRows: '340px', gap: 'var(--space-3)', marginBottom: 'var(--space-3)' }}>
-            {/* Big card: Consultation */}
-            <div style={{ position: 'relative', borderRadius: 'var(--radius-xl)', overflow: 'hidden', cursor: 'pointer' }}
-              onMouseEnter={e => e.currentTarget.querySelector('img').style.transform = 'scale(1.05)'}
-              onMouseLeave={e => e.currentTarget.querySelector('img').style.transform = 'scale(1)'}
+          <div style={{ display: 'grid', gridTemplateColumns: '1.3fr 1fr', gridTemplateRows: '320px', gap: '20px', marginBottom: '20px' }}>
+            {/* Consultation — Pink */}
+            <div style={{
+              borderRadius: '32px',
+              cursor: 'pointer',
+              background: '#85E3FF',
+              padding: '40px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'flex-start',
+              transition: 'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease',
+              boxShadow: '0 8px 30px rgba(255, 181, 232, 0.35)',
+            }}
+              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-8px) rotate(-1deg)'; e.currentTarget.style.boxShadow = '0 20px 50px rgba(255, 181, 232, 0.5)'; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0) rotate(0deg)'; e.currentTarget.style.boxShadow = '0 8px 30px rgba(255, 181, 232, 0.35)'; }}
             >
-              <img src="/statics/Si/IMG_9592.JPG" alt="Consultation" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 35%', transition: 'transform 0.6s var(--ease-out)' }} />
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(26,60,50,0.92) 0%, rgba(26,60,50,0.3) 50%, transparent 100%)' }} />
-              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: 'var(--space-6)' }}>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(74,124,111,0.35)', backdropFilter: 'blur(8px)', border: '1px solid rgba(74,124,111,0.5)', borderRadius: 'var(--radius-full)', padding: '5px 14px', marginBottom: 'var(--space-3)' }}>
-                  <HeartPulse size={14} color="#a8d5c9" />
-                  <span style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.08em', color: '#a8d5c9' }}>CONSULTATIONS</span>
-                </div>
-                <h3 style={{ color: '#fff', marginBottom: 'var(--space-2)', fontSize: '1.5rem' }}>Expert Wellness Exams</h3>
-                <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', lineHeight: 1.6 }}>Thorough diagnostics and personalized care plans for every pet.</p>
-              </div>
+              <span style={{ fontSize: '3.5rem', fontWeight: 900, color: '#1a1a1a', lineHeight: 1.1, marginBottom: '16px' }}>Expert Wellness Exams.</span>
+              <p style={{ color: '#1a1a1a', opacity: 0.7, fontSize: '1.1rem', lineHeight: 1.5, fontWeight: 600, maxWidth: '85%' }}>Thorough diagnostics and personalized care plans for every pet.</p>
             </div>
-            {/* Vaccination */}
-            <div style={{ position: 'relative', borderRadius: 'var(--radius-xl)', overflow: 'hidden', cursor: 'pointer' }}
-              onMouseEnter={e => e.currentTarget.querySelector('img').style.transform = 'scale(1.05)'}
-              onMouseLeave={e => e.currentTarget.querySelector('img').style.transform = 'scale(1)'}
+            {/* Vaccination — Purple */}
+            <div style={{
+              borderRadius: '32px',
+              cursor: 'pointer',
+              background: '#B28DFF',
+              padding: '40px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'flex-start',
+              transition: 'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease',
+              boxShadow: '0 8px 30px rgba(178, 141, 255, 0.35)',
+            }}
+              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-8px) rotate(1.5deg)'; e.currentTarget.style.boxShadow = '0 20px 50px rgba(178, 141, 255, 0.5)'; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0) rotate(0deg)'; e.currentTarget.style.boxShadow = '0 8px 30px rgba(178, 141, 255, 0.35)'; }}
             >
-              <img src="/statics/Si/IMG_9596.JPG" alt="Vaccination" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', transition: 'transform 0.6s var(--ease-out)' }} />
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(60,40,100,0.9) 0%, rgba(60,40,100,0.2) 60%, transparent 100%)' }} />
-              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: 'var(--space-6)' }}>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(107,91,174,0.35)', backdropFilter: 'blur(8px)', border: '1px solid rgba(107,91,174,0.5)', borderRadius: 'var(--radius-full)', padding: '5px 14px', marginBottom: 'var(--space-3)' }}>
-                  <ShieldCheck size={14} color="#c4b8f0" />
-                  <span style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.08em', color: '#c4b8f0' }}>VACCINATION</span>
-                </div>
-                <h3 style={{ color: '#fff', marginBottom: 'var(--space-2)', fontSize: '1.5rem' }}>Immunization Programs</h3>
-                <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', lineHeight: 1.6 }}>Tailored to your pet's age, breed, and lifestyle risks.</p>
-              </div>
+              <span style={{ fontSize: '3rem', fontWeight: 900, color: '#1a1a1a', lineHeight: 1.1, marginBottom: '16px' }}>Immunization & Vaccination.</span>
+              <p style={{ color: '#1a1a1a', opacity: 0.7, fontSize: '1.05rem', lineHeight: 1.5, fontWeight: 600 }}>Tailored to your pet's age, breed, and lifestyle.</p>
             </div>
           </div>
 
           {/* BENTO GRID — row 2: 3 cards */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr 1fr', gridTemplateRows: '280px', gap: 'var(--space-3)' }}>
-            {/* Emergency */}
-            <div style={{ position: 'relative', borderRadius: 'var(--radius-xl)', overflow: 'hidden', cursor: 'pointer' }}
-              onMouseEnter={e => e.currentTarget.querySelector('img').style.transform = 'scale(1.06)'}
-              onMouseLeave={e => e.currentTarget.querySelector('img').style.transform = 'scale(1)'}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr 1fr', gridTemplateRows: '280px', gap: '20px' }}>
+            {/* Emergency — Peach/Orange */}
+            <div style={{
+              borderRadius: '32px',
+              cursor: 'pointer',
+              background: '#FFC5A1',
+              padding: '36px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'flex-start',
+              transition: 'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease',
+              boxShadow: '0 8px 30px rgba(255, 197, 161, 0.35)',
+            }}
+              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-8px) rotate(1deg)'; e.currentTarget.style.boxShadow = '0 20px 50px rgba(255, 197, 161, 0.5)'; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0) rotate(0deg)'; e.currentTarget.style.boxShadow = '0 8px 30px rgba(255, 197, 161, 0.35)'; }}
             >
-              <img src="/statics/Si/IMG_9603.JPG" alt="Emergency" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%', transition: 'transform 0.6s var(--ease-out)' }} />
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(140,40,40,0.9) 0%, rgba(100,20,20,0.3) 60%, transparent 100%)' }} />
-              <div style={{ position: 'absolute', bottom: 0, padding: 'var(--space-5)' }}>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(196,92,92,0.35)', backdropFilter: 'blur(8px)', border: '1px solid rgba(196,92,92,0.5)', borderRadius: 'var(--radius-full)', padding: '4px 12px', marginBottom: 'var(--space-2)' }}>
-                  <Clock size={12} color="#f0b8b8" />
-                  <span style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.08em', color: '#f0b8b8' }}>24/7 EMERGENCY</span>
-                </div>
-                <h4 style={{ color: '#fff', fontSize: '1.1rem' }}>Always Here for You</h4>
-              </div>
+              <span style={{ fontSize: '2.4rem', fontWeight: 900, color: '#1a1a1a', lineHeight: 1.1, marginBottom: '12px' }}>24/7 Emergency Care.</span>
+              <p style={{ color: '#1a1a1a', opacity: 0.7, fontSize: '1rem', lineHeight: 1.5, fontWeight: 600 }}>Always here when you need us most.</p>
             </div>
-            {/* Surgery — wide center */}
-            <div style={{ position: 'relative', borderRadius: 'var(--radius-xl)', overflow: 'hidden', cursor: 'pointer' }}
-              onMouseEnter={e => e.currentTarget.querySelector('img').style.transform = 'scale(1.05)'}
-              onMouseLeave={e => e.currentTarget.querySelector('img').style.transform = 'scale(1)'}
+            {/* Surgery — Cyan */}
+            <div style={{
+              borderRadius: '32px',
+              cursor: 'pointer',
+              background: '#FFB5E8',
+              padding: '36px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'flex-start',
+              transition: 'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease',
+              boxShadow: '0 8px 30px rgba(133, 227, 255, 0.35)',
+            }}
+              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-8px) rotate(-1.5deg)'; e.currentTarget.style.boxShadow = '0 20px 50px rgba(133, 227, 255, 0.5)'; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0) rotate(0deg)'; e.currentTarget.style.boxShadow = '0 8px 30px rgba(133, 227, 255, 0.35)'; }}
             >
-              <img src="/statics/Si/IMG_9598.JPG" alt="Surgery" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%', transition: 'transform 0.6s var(--ease-out)' }} />
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(20,40,80,0.92) 0%, rgba(20,40,80,0.25) 55%, transparent 100%)' }} />
-              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: 'var(--space-6)' }}>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(91,123,174,0.35)', backdropFilter: 'blur(8px)', border: '1px solid rgba(91,123,174,0.5)', borderRadius: 'var(--radius-full)', padding: '5px 14px', marginBottom: 'var(--space-3)' }}>
-                  <Stethoscope size={14} color="#b8cff0" />
-                  <span style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.08em', color: '#b8cff0' }}>ADVANCED SURGERY</span>
-                </div>
-                <h3 style={{ color: '#fff', fontSize: '1.4rem', marginBottom: 'var(--space-2)' }}>Board-Certified Surgeons</h3>
-                <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.875rem', lineHeight: 1.6 }}>From routine spays to complex orthopedic procedures.</p>
-              </div>
+              <span style={{ fontSize: '2.8rem', fontWeight: 900, color: '#1a1a1a', lineHeight: 1.1, marginBottom: '12px' }}>Board-Certified Surgeons.</span>
+              <p style={{ color: '#1a1a1a', opacity: 0.7, fontSize: '1.05rem', lineHeight: 1.5, fontWeight: 600 }}>From routine spays to complex orthopedic procedures.</p>
             </div>
-            {/* Nutrition */}
-            <div style={{ position: 'relative', borderRadius: 'var(--radius-xl)', overflow: 'hidden', cursor: 'pointer' }}
-              onMouseEnter={e => e.currentTarget.querySelector('img').style.transform = 'scale(1.06)'}
-              onMouseLeave={e => e.currentTarget.querySelector('img').style.transform = 'scale(1)'}
+            {/* Nutrition — Mint */}
+            <div style={{
+              borderRadius: '32px',
+              cursor: 'pointer',
+              background: '#BFFCC6',
+              padding: '36px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'flex-start',
+              transition: 'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease',
+              boxShadow: '0 8px 30px rgba(191, 252, 198, 0.35)',
+            }}
+              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-8px) rotate(1deg)'; e.currentTarget.style.boxShadow = '0 20px 50px rgba(191, 252, 198, 0.5)'; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0) rotate(0deg)'; e.currentTarget.style.boxShadow = '0 8px 30px rgba(191, 252, 198, 0.5)'; }}
             >
-              <img src="/statics/Si/IMG_9595.JPG" alt="Nutrition" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 35%', transition: 'transform 0.6s var(--ease-out)' }} />
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(40,80,40,0.9) 0%, rgba(40,80,40,0.25) 60%, transparent 100%)' }} />
-              <div style={{ position: 'absolute', bottom: 0, padding: 'var(--space-5)' }}>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(123,174,91,0.35)', backdropFilter: 'blur(8px)', border: '1px solid rgba(123,174,91,0.5)', borderRadius: 'var(--radius-full)', padding: '4px 12px', marginBottom: 'var(--space-2)' }}>
-                  <ShieldCheck size={12} color="#c8f0b8" />
-                  <span style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.08em', color: '#c8f0b8' }}>NUTRITION</span>
-                </div>
-                <h4 style={{ color: '#fff', fontSize: '1.1rem' }}>Custom Diet Plans</h4>
-              </div>
+              <span style={{ fontSize: '2.4rem', fontWeight: 900, color: '#1a1a1a', lineHeight: 1.1, marginBottom: '12px' }}>Custom Diets & Nutrition.</span>
+              <p style={{ color: '#1a1a1a', opacity: 0.7, fontSize: '1rem', lineHeight: 1.5, fontWeight: 600 }}>Personalized meal plans for every pet.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* ======================================================
-          SECTION 4: WHY VETCARE — Stats + split image
+          SECTION 4: EMOTIONAL BREAK — Full bleed image
           ====================================================== */}
-      <section style={{ background: 'linear-gradient(135deg,#faf8f5 0%,#e8f0ed 100%)', padding: 'var(--space-10) 0' }}>
-        <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-9)', alignItems: 'center' }}>
-            {/* Left: stats */}
-            <div>
-              <p className="label" style={{ marginBottom: 'var(--space-3)' }}>WHY VETCARE</p>
-              <h2 style={{ marginBottom: 'var(--space-6)' }}>Premium Care, Proven Results</h2>
-              <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, marginBottom: 'var(--space-8)', color: 'var(--color-body)' }}>
-                For over 8 years, we've set the standard for veterinary excellence — blending advanced medicine with the warmth every pet deserves.
-              </p>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-5)' }}>
-                {[
-                  { val: '12k+', label: 'Patients treated', color: '#4A7C6F', bg: '#e8f0ed' },
-                  { val: '98%',  label: 'Satisfaction rate', color: '#6B5BAE', bg: '#ede8f5' },
-                  { val: '24/7', label: 'Emergency care',   color: '#C45C5C', bg: '#fceaea' },
-                  { val: '6',    label: 'Certified vets',   color: '#5B7BAE', bg: '#e8edf5' },
-                ].map((s, i) => (
-                  <div key={i} style={{
-                    padding: 'var(--space-5)',
-                    background: s.bg,
-                    borderRadius: 'var(--radius-lg)',
-                    border: `1px solid ${s.color}22`,
-                    transition: 'transform 0.25s var(--ease-out)',
-                  }}
-                    onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-4px)'}
-                    onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
-                  >
-                    <div style={{ fontFamily: 'var(--font-serif)', fontSize: '2.25rem', color: s.color, lineHeight: 1, marginBottom: '6px' }}>{s.val}</div>
-                    <div style={{ fontSize: '0.875rem', color: 'var(--color-body)', fontWeight: 500 }}>{s.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            {/* Right: photos collage */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: '240px 240px', gap: 'var(--space-3)' }}>
-              <div style={{ gridRow: '1/3', borderRadius: 'var(--radius-xl)', overflow: 'hidden' }}>
-                <img src="/statics/Si/IMG_9590.JPG" alt="Pet care" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              </div>
-              <div style={{ borderRadius: 'var(--radius-xl)', overflow: 'hidden' }}>
-                <img src="/statics/Si/IMG_9594.JPG" alt="Pet care" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              </div>
-              <div style={{ borderRadius: 'var(--radius-xl)', overflow: 'hidden' }}>
-                <img src="/statics/Si/IMG_9611.JPG" alt="Pet care" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              </div>
-            </div>
-          </div>
+      <section style={{
+        position: 'relative',
+        height: '60vh',
+        minHeight: '450px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden',
+      }}>
+        <img
+          src="/statics/Si/IMG_9589.JPG"
+          alt="Cat and dog together — because every pet is family"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center 35%',
+          }}
+        />
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.15) 100%)',
+        }} />
+
+        <div style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: '700px', padding: '0 var(--space-5)' }}>
+          <p style={{ fontSize: '0.85rem', fontWeight: 700, letterSpacing: '0.2em', color: 'rgba(255,255,255,0.6)', marginBottom: '16px', textTransform: 'uppercase' }}>EVERY PET DESERVES THE BEST</p>
+          <h2 style={{ color: '#fff', fontWeight: 900, fontSize: '2.8rem', lineHeight: 1.15, marginBottom: '16px', textShadow: '0 2px 20px rgba(0,0,0,0.3)' }}>
+            8 Years of Love, Trust & Expertise
+          </h2>
+          <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1.15rem', lineHeight: 1.7, maxWidth: '540px', margin: '0 auto' }}>
+            Over 12,000 happy patients — from playful puppies to senior cats. Our board-certified team is here 24/7, because family doesn't wait.
+          </p>
         </div>
+
       </section>
 
       {/* ======================================================
@@ -301,7 +301,7 @@ export default function LandingPage() {
       <section style={{
         position: 'relative',
         padding: 'var(--space-11) 0',
-        background: '#faf8f5',
+        background: '#F3D571 ',
       }}>
         <div className="container" style={{
           display: 'grid',
@@ -430,9 +430,9 @@ export default function LandingPage() {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 'var(--space-5)' }}>
             {[
-              { img: '/statics/Si/IMG_9597.JPG', cat: 'HYGIENE',     catColor: '#6B5BAE', title: 'Dental Care 101: Keeping Your Pet\'s Smile Healthy', read: '5 min' },
-              { img: '/statics/Si/IMG_9595.JPG', cat: 'NUTRITION',   catColor: '#4A7C6F', title: 'Why Cats Need a Different Diet Than Dogs',          read: '4 min' },
-              { img: '/statics/Si/IMG_9601.JPG', cat: 'VACCINATION', catColor: '#C45C5C', title: 'The Complete Puppy Vaccination Schedule',            read: '6 min' },
+              { img: '/statics/Si/IMG_9597.JPG', cat: 'HYGIENE', catColor: '#6B5BAE', title: 'Dental Care 101: Keeping Your Pet\'s Smile Healthy', read: '5 min' },
+              { img: '/statics/Si/IMG_9595.JPG', cat: 'NUTRITION', catColor: '#4A7C6F', title: 'Why Cats Need a Different Diet Than Dogs', read: '4 min' },
+              { img: '/statics/Si/IMG_9601.JPG', cat: 'VACCINATION', catColor: '#C45C5C', title: 'The Complete Puppy Vaccination Schedule', read: '6 min' },
             ].map((tip, i) => (
               <Link to="/health-tips" key={i} style={{
                 display: 'block', borderRadius: 'var(--radius-lg)', overflow: 'hidden',

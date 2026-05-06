@@ -133,12 +133,12 @@ export default function DashboardPage() {
   const totalPets = animalsToDisplay.length;
   const upcomingApts = appointmentsToDisplay.filter(a => a.status === 'pending' || a.status === 'confirmed').length;
   const completedApts = appointmentsToDisplay.filter(a => a.status === 'done').length;
-  
+
   // Find next visit date
   const upcoming = appointmentsToDisplay
     .filter(a => a.status === 'pending' || a.status === 'confirmed')
     .sort((a, b) => new Date(a.date) - new Date(b.date));
-  
+
   let nextVisitStr = '--';
   if (upcoming.length > 0) {
     const d = new Date(upcoming[0].date);
@@ -163,7 +163,7 @@ export default function DashboardPage() {
         position: 'relative',
         paddingTop: 'calc(var(--nav-height) + var(--space-9))',
         paddingBottom: 'var(--space-9)',
-        background: '#1a3a2e',
+        background: '#33212A',
         overflow: 'hidden',
       }}>
         {/* Decorative circles */}
@@ -287,7 +287,9 @@ export default function DashboardPage() {
                         <p style={{ fontWeight: 600, color: 'var(--color-dark)', fontSize: '0.9375rem' }}>{a.name}</p>
                         <p className="text-xs text-muted">{a.race} {a.age ? `· ${a.age} yrs` : ''}</p>
                       </div>
-                      <ArrowRight size={16} color="var(--color-stone)" />
+                      <Link to={`/health-book/${a.id}`} className="btn btn-outline btn-sm" style={{ padding: '4px 10px', fontSize: '0.75rem', zIndex: 2, position: 'relative' }}>
+                        Carnet
+                      </Link>
                     </div>
                   ))
                 )}

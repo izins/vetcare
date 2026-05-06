@@ -60,12 +60,12 @@ export default function HealthTipsPage() {
         position: 'relative',
         paddingTop: 'calc(var(--nav-height) + var(--space-9))',
         paddingBottom: 'var(--space-10)',
-        background: '#1a3a2e',
+        background: 'linear-gradient(135deg, #1A1A1A 0%, #2C3935 50%, #1A1A1A 100%)',
         overflow: 'hidden',
         textAlign: 'center',
       }}>
-        <div style={{ position: 'absolute', top: '-80px', right: '20%', width: '300px', height: '300px', borderRadius: '50%', background: 'rgba(168,213,201,0.06)', filter: 'blur(80px)' }} />
-        <div style={{ position: 'absolute', bottom: '-60px', left: '30%', width: '200px', height: '200px', borderRadius: '50%', background: 'rgba(168,213,201,0.04)', filter: 'blur(60px)' }} />
+        <div style={{ position: 'absolute', top: '-80px', right: '20%', width: '300px', height: '300px', borderRadius: '50%', background: 'rgba(74,124,111,0.1)', filter: 'blur(60px)' }} />
+        <div style={{ position: 'absolute', bottom: '-60px', left: '30%', width: '200px', height: '200px', borderRadius: '50%', background: 'rgba(232,168,73,0.08)', filter: 'blur(50px)' }} />
 
         <div className="container" style={{ position: 'relative', zIndex: 1, maxWidth: '700px' }}>
           <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.875rem', fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 'var(--space-4)' }}>
